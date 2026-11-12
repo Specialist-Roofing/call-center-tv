@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Call Center Display</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+  iframe { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+           border: 0; transform-origin: 0 0; background: #fff; }
+</style>
+</head>
+<body>
+<iframe id="dash" src="https://srrreporting.com/public/dashboard/954dc155-b21f-4218-bdae-004538631fe4#refresh=300"></iframe>
+<script>
+  var W = 1920, H = 1080;
+  function fit() {
+    var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    document.getElementById('dash').style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+  // Full page reload every 6 hours to keep the TV browser fresh
+  setTimeout(function () { location.reload(); }, 6 * 60 * 60 * 1000);
+</script>
+</body>
+</html>
