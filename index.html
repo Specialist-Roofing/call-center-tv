@@ -11,15 +11,19 @@
 </style>
 </head>
 <body>
-<iframe id="dash" src="https://srrreporting.com/public/dashboard/954dc155-b21f-4218-bdae-004538631fe4#refresh=300"></iframe>
+<iframe id="dash" src="https://srrreporting.com/public/dashboard/954dc155-b21f-4218-bdae-004538631fe4"></iframe>
 <script>
   var W = 1920, H = 1080;
+  var DASH = 'https://srrreporting.com/public/dashboard/954dc155-b21f-4218-bdae-004538631fe4';
+  var frame = document.getElementById('dash');
   function fit() {
     var s = Math.min(window.innerWidth / W, window.innerHeight / H);
-    document.getElementById('dash').style.transform = 'scale(' + s + ')';
+    frame.style.transform = 'scale(' + s + ')';
   }
   window.addEventListener('resize', fit);
   fit();
+  // Reload the dashboard every 5 minutes
+  setInterval(function () { frame.src = DASH + '?t=' + Date.now(); }, 5 * 60 * 1000);
   // Full page reload every 6 hours to keep the TV browser fresh
   setTimeout(function () { location.reload(); }, 6 * 60 * 60 * 1000);
 </script>
